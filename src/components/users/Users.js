@@ -19,14 +19,10 @@ export default function Users() {
 		});
 	}, []);
 
-	const lift = (chose) => {
-		setChosenUser(chose);
-	};
-
 	return (
 		<div>
 			{chosenUser && <UserDetails currentUser={chosenUser} key={chosenUser.id}/>}
-			<div>{users.map((user) => <User person={user} lift={lift} key={user.id}/>)}</div>
+			<div>{users.map((user) => <User person={user} lift={setChosenUser} key={user.id}/>)}</div>
 		</div>
 	);
 }
