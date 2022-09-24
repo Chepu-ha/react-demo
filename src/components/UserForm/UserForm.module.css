@@ -1,0 +1,15 @@
+.UserForm {
+    max-width: 30%;
+    display: flex;
+    column-gap: 10px;
+    margin: 20px auto;
+}
+.UserForm input {
+    flex: 1 1 auto;
+    height: 30px;
+    font-size: 20px;
+}
+
+.UserForm button {
+    flex: 0 0 100px
+}

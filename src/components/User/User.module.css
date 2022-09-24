@@ -1,0 +1,15 @@
+.User {
+    border: 3px solid orangered;
+    width: 300px;
+    margin: 20px auto;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    justify-content: center;
+}
