@@ -1,4 +1,4 @@
-export default function Todo({todo}) {
+export function Todo({todo}) {
     return (
         <div>
             <p>Todo {todo.id} -- {JSON.stringify(todo)}</p>

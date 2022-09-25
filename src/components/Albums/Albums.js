@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
 
 import {albumsService} from "../../services";
-import Album from "../Album/Album";
+import {Album} from "../Album/Album";
 
 
-export default function Albums() {
+export function Albums() {
 
 	const [albums, setAlbums] = useState([]);
 

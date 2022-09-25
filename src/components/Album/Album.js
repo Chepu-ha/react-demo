@@ -1,4 +1,4 @@
-export default function Album({album}) {
+export function Album({album}) {
     return (
         <div>
             <p>Album {album.id} -- {JSON.stringify(album)}</p>

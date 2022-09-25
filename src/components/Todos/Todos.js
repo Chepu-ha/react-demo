@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
 
 import {todosService} from "../../services";
-import Todo from "../Todo/Todo";
+import {Todo} from "../Todo/Todo";
 
-export default function Todos() {
+export function Todos() {
 
 	const [todos, setTodos] = useState([]);
 

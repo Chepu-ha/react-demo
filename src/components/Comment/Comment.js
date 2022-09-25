@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 
 import commentStyle from "./Comment.module.css";
 
-export default function Comment({comment}) {
+export function Comment({comment}) {
 
 	return (
 		<div className={commentStyle.Comment}>

@@ -8,10 +8,7 @@ import {
 	Outlet
 } from "react-router-dom";
 
-import Todos from "./components/Todos/Todos";
-import Albums from "./components/Albums/Albums";
-import Comments from "./components/Comments/Comments";
-import Post from "./components/Post/Post";
+import {Albums, Comments, Post, Todos} from "./components";
 
 function App() {
 	return (
