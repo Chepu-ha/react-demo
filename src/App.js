@@ -1,14 +1,12 @@
 import "./App.css";
 
 import {
-	BrowserRouter,
 	Routes,
 	Route,
-	Link,
-	Outlet
+	Link
 } from "react-router-dom";
 
-import {Albums, Comments, Post, Todos} from "./components";
+import {Albums, Comments, Home, Post, Todos} from "./components";
 
 function App() {
 	return (
@@ -21,10 +19,12 @@ function App() {
 			</ul>
 
 			<Routes>
+				<Route index element={<Home />} />
 				<Route path={"/todos"} element={<Todos/>}/>
 				<Route path={"/albums"} element={<Albums/>}/>
-				<Route path={"/comments"} element={<Comments/>}/>
-				<Route path={"/posts/:id"} element={<Post/>}/>
+				<Route path={"/comments"} element={<Comments/>}>
+					<Route path={":id"} element={<Post/>}/>
+				</Route>
 			</Routes>
 		</div>
 )

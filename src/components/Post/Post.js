@@ -5,7 +5,7 @@ import {postsService} from "../../services";
 
 export function Post() {
 
-	const [post, setPost] = useState([]);
+	const [post, setPost] = useState(null);
 	const {id: postId} = useParams();
 
 	useEffect(() => {
@@ -16,7 +16,7 @@ export function Post() {
 
 	return (
 		<div>
-			<div>Post {postId} -- {JSON.stringify(post)}</div>
+			{post && <div>Post {postId} -- {JSON.stringify(post)}</div>}
 		</div>
 	);
 }

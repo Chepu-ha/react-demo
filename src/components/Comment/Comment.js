@@ -1,13 +1,24 @@
-import {Link} from "react-router-dom";
+import {Link, Outlet, useParams} from "react-router-dom";
 
-import commentStyle from "./Comment.module.css";
+import CommentStyle from "./Comment.module.css";
 
 export function Comment({comment}) {
 
+	const {id: postId} = useParams();
+
 	return (
-		<div className={commentStyle.Comment}>
-			<p><span>Comment {comment.id} -- </span><Link
-				to={`/posts/${comment.id}`}><span>{JSON.stringify(comment)}</span></Link></p>
+		<div className={CommentStyle.Comment}>
+			<div>
+				<div>
+					<span>Comment {comment.id} -- </span>
+					<Link to={`${comment.id}`}>
+						<span>{JSON.stringify(comment)}</span>
+					</Link>
+				</div>
+			</div>
+			<div>
+				{comment.id === Number(postId) && <Outlet/>}
+			</div>
 		</div>
 	);
 }

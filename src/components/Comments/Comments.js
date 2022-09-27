@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import {Outlet} from "react-router-dom";
 
 import {commentsService} from "../../services";
 import {Comment} from "../Comment/Comment";
@@ -16,7 +15,6 @@ export function Comments() {
 	return (
 		<div>
 			<h2>Comments</h2>
-			<Outlet/>
 			<div>{comments.map((comment)=><Comment comment={comment} key={comment.id}/>)}</div>
 		</div>
 	);

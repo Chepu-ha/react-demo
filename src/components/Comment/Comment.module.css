@@ -1,6 +1,14 @@
 .Comment {
     display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+    column-gap: 20px;
+    margin: 0 10px 20px 10px;
+}
+
+.Comment > * {
+    flex: 1 1 50%;
     border: 2px solid orange;
+    height: 100px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
 }
