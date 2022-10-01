@@ -10,15 +10,27 @@ const init = (initialValue) => {
 const reducer = (state, action) => {
 	switch (action.type) {
 		case "DOG":
-			if (action.dog) {
-				state.dogNames.push(action.dog);
+			if (action.payload) {
+				state.dogNames.push(action.payload);
 			}
 			return {...state};
 		case "CAT":
-			if (action.cat) {
-				state.catNames.push(action.cat);
+			if (action.payload) {
+				state.catNames.push(action.payload);
 			}
 			return {...state};
+		case "DEL-DOG":
+			const dogIndex = state.dogNames.findIndex(value => value === action.payload);
+			if (dogIndex !== -1) {
+				state.dogNames.splice(dogIndex, 1);
+			}
+			break
+		case "DEL-CAT":
+			const catIndex = state.catNames.findIndex(value => value === action.payload);
+			if (catIndex !== -1) {
+				state.catNames.splice(catIndex, 1);
+			}
+			break
 		default:
 			return {...state};
 	}
@@ -31,11 +43,11 @@ export function Animals() {
 	const {register, handleSubmit} = useForm({mode: "all"});
 
 	const dogFormSubmit = (data) => {
-		dispatch({type: "DOG", dog: data.dogInput})
+		dispatch({type: "DOG", payload: data.dogInput});
 	};
 
 	const catFormSubmit = (data) => {
-		dispatch({type: "CAT", cat: data.catInput})
+		dispatch({type: "CAT", payload: data.catInput});
 	};
 
 	return (
@@ -53,10 +65,24 @@ export function Animals() {
 			<hr/>
 			<div className={AnimalsStyle.Animals}>
 				<div className={AnimalsStyle.Animal}>
-					{state.dogNames.map((dogName, index) => <div key={index}><div>{dogName}</div></div>)}
+					{state.dogNames.map((dogName, index) =>
+						<div className={AnimalsStyle.SubAnimal} key={index}>
+							<div>{dogName}</div>
+							<button onClick={() => {
+								dispatch({type: "DEL-DOG", payload: dogName});
+							}}>Delete dog
+							</button>
+						</div>)}
 				</div>
 				<div className={AnimalsStyle.Animal}>
-					{state.catNames.map((catName, index) => <div key={index}>{catName}</div>)}
+					{state.catNames.map((catName, index) =>
+						<div className={AnimalsStyle.SubAnimal} key={index}>
+							<div>{catName}</div>
+							<button onClick={() => {
+								dispatch({type: "DEL-CAT", payload: catName});
+							}}>Delete cat
+							</button>
+						</div>)}
 				</div>
 			</div>
 		</div>

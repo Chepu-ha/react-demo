@@ -18,11 +18,18 @@
     flex: 0 1 50%;
 }
 
-.Animal > * {
+.SubAnimal {
+    display: flex;
+    padding-right: 10px;
     border: 2px solid firebrick;
     min-height: 50px;
     width: 100%;
-    display: flex;
+    column-gap: 50px;
     justify-content: center;
     align-items: center;
 }
+
+.SubAnimal > * {
+    flex: 0 1 50%;
+    text-align: center;
+ }
