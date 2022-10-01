@@ -10,10 +10,14 @@ const init = (initialValue) => {
 const reducer = (state, action) => {
 	switch (action.type) {
 		case "DOG":
-			state.dogNames.push("Dog from input");
+			if (action.dog) {
+				state.dogNames.push(action.dog);
+			}
 			return {...state};
 		case "CAT":
-			state.catNames.push("Cat from input");
+			if (action.cat) {
+				state.catNames.push(action.cat);
+			}
 			return {...state};
 		default:
 			return {...state};
@@ -26,28 +30,30 @@ export function Animals() {
 
 	const {register, handleSubmit} = useForm({mode: "all"});
 
-	const formSubmit = (data) => {
-		console.log(data);
+	const dogFormSubmit = (data) => {
+		dispatch({type: "DOG", dog: data.dogInput})
+	};
+
+	const catFormSubmit = (data) => {
+		dispatch({type: "CAT", cat: data.catInput})
 	};
 
 	return (
 		<div>
-			<form onSubmit={handleSubmit(formSubmit)} className={AnimalsStyle.AnimalsForm}>
-				<input type="text" placeholder={"Enter new dog"} {...register("dogInput")}/>
-				<button onClick={() => {
-					dispatch({type: "DOG"});
-				}}>Dog
-				</button>
-				<input type="text" placeholder={"Enter new cat"} {...register("catInput")}/>
-				<button onClick={() => {
-					dispatch({type: "CAT"});
-				}}>Cat
-				</button>
-			</form>
+			<div className={AnimalsStyle.AnimalsForm}>
+				<form onSubmit={handleSubmit(dogFormSubmit)}>
+					<input type="text" placeholder={"Enter new dog"} {...register("dogInput")}/>
+					<button>Dog</button>
+				</form>
+				<form onSubmit={handleSubmit(catFormSubmit)}>
+					<input type="text" placeholder={"Enter new cat"} {...register("catInput")}/>
+					<button>Cat</button>
+				</form>
+			</div>
 			<hr/>
 			<div className={AnimalsStyle.Animals}>
 				<div className={AnimalsStyle.Animal}>
-					{state.dogNames.map((dogName, index) => <div key={index}>{dogName}</div>)}
+					{state.dogNames.map((dogName, index) => <div key={index}><div>{dogName}</div></div>)}
 				</div>
 				<div className={AnimalsStyle.Animal}>
 					{state.catNames.map((catName, index) => <div key={index}>{catName}</div>)}
