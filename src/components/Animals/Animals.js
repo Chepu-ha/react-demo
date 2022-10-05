@@ -10,28 +10,15 @@ const init = (initialValue) => {
 const reducer = (state, action) => {
 	switch (action.type) {
 		case "DOG":
-			if (action.payload) {
-				state.dogNames.push(action.payload);
-			}
-			return {...state};
+			return {...state, dogNames: [...state.dogNames, action.payload]};
 		case "CAT":
-			if (action.payload) {
-				state.catNames.push(action.payload);
-			}
-			return {...state};
+			return {...state, catNames: [...state.catNames, action.payload]};
 		case "DEL-DOG":
-			const dogIndex = state.dogNames.findIndex(value => value === action.payload);
-			if (dogIndex !== -1) {
-				state.dogNames.splice(dogIndex, 1);
-			}
-			break
+			return {...state, dogNames: state.dogNames.filter(dog => dog !== action.payload)};
 		case "DEL-CAT":
-			const catIndex = state.catNames.findIndex(value => value === action.payload);
-			if (catIndex !== -1) {
-				state.catNames.splice(catIndex, 1);
-			}
-			break
+			return {...state, catNames: state.catNames.filter(cat => cat !== action.payload)};
 		default:
+			console.log("Error");
 			return {...state};
 	}
 };
