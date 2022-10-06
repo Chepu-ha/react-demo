@@ -1,24 +1,19 @@
 import "./App.css";
-import {Link, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 
-import {Comments, Home, Posts, Users,} from "./components";
+import {Comments, Posts, Users,} from "./components";
+import {MainLayout} from "./layouts";
 
 function App() {
 
-  	return (
+	return (
 		<div>
-			<ul>
-				<li><Link to={""}>Home</Link></li>
-				<li><Link to={"/users"}>Users</Link></li>
-				<li><Link to={"/comments"}>Comments</Link></li>
-				<li><Link to={"/posts"}>Posts</Link></li>
-			</ul>
-
 			<Routes>
-				<Route index element={<Home/>} />
-				<Route path={"/users"} element={<Users/>} />
-				<Route path={"/comments"} element={<Comments/>} />
-				<Route path={"/posts"} element={<Posts/>} />
+				<Route path={"/"} element={<MainLayout/>}>
+					<Route path={"users"} element={<Users/>}/>
+					<Route path={"comments"} element={<Comments/>}/>
+					<Route path={"posts"} element={<Posts/>}/>
+				</Route>
 			</Routes>
 		</div>
 	);
