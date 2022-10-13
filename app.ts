@@ -1,24 +1,16 @@
-import {
-    IRocket,
-    IFirst_stage,
-    ICore,
-    ISecond_stage,
-    IPayload,
-    ILinks,
-    ISpace
-} from "./interfaces";
+import {ISpace, IUser} from "./interfaces";
 
 import {incAge, showSum, sum} from "./functions";
 
 //task-1
-const space: ISpace<ILinks, IRocket<IFirst_stage<ICore>, ISecond_stage<IPayload>>> = {
+const space: ISpace = {
     mission_name: "Starlink-15 (v1.0)",
     launch_date_local: "2020-10-24T11:31:00-04:00",
     launch_site: {
         site_name_long: "Cape Canaveral Air Force Station Space Launch Complex 40"
     },
     links: {
-        article_link: null,
+        article_link: "str",
         video_link: "https://youtu/J442-ti-Dhg"
     },
     rocket: {
@@ -53,4 +45,10 @@ console.log(sum(1, 2))
 
 showSum(2, 3)
 
-console.log(incAge({age: 18}, 2))
+const user: IUser = {
+    name: "Max",
+    age: 18,
+    gender: "Male"
+}
+
+console.log(incAge(user, 1))

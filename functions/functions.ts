@@ -21,7 +21,9 @@
 // showSum(2,3)
 // incAge(user, 2)
 
-const user: { name: string, age: number, gender: string } = {
+import { IUser } from "../interfaces"
+
+const user:IUser = {
     name: "Max",
     age: 18,
     gender: "male"
@@ -31,11 +33,11 @@ const sum = (a: number, b: number): number => {
     return a * b
 }
 
-const showSum = (a: number, b: number) => {
+const showSum = (a: number, b: number):void => {
     console.log(a + b)
 }
 
-const incAge = (someUser: object, inc: number): object => {
+const incAge = (someUser: IUser, inc: number): IUser => {
     someUser["age"] += inc
     return someUser
 }
